@@ -14,5 +14,6 @@
 
     <modules>
 		<module>store-ms</module>
+		<module>supplier-ms</module>
     </modules>
 </project>

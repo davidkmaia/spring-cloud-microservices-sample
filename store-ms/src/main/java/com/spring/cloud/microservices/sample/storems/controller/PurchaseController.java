@@ -11,7 +11,7 @@ import com.spring.cloud.microservices.sample.storems.service.PurchaseService;
 
 
 @RestController
-@RequestMapping("/compra")
+@RequestMapping("/purchase")
 public class PurchaseController {
 	
 	@Autowired
