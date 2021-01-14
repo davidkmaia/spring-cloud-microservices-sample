@@ -7,11 +7,8 @@ spring:
   application:
     name: 'supplier'
 
-  jpa:
-    hibernate:
-      ddl-auto: create
   datasource:
-    url: jdbc:h2:mem:baseapp
+    url: jdbc:h2:mem:supplier
     driver-class-name: org.h2.Driver
     username: sa
     password: 
