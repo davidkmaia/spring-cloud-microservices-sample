@@ -15,5 +15,6 @@
     <modules>
 		<module>store-ms</module>
 		<module>supplier-ms</module>
+		<module>eureka-server</module>
     </modules>
 </project>
