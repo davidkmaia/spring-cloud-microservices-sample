@@ -1,4 +1,4 @@
-package com.spring.cloud.microservices.sample.supplierms;
+package com.spring.cloud.microservices.sample.eureka;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
