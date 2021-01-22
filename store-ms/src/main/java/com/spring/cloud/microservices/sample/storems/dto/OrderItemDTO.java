@@ -1,6 +1,6 @@
 package com.spring.cloud.microservices.sample.storems.dto;
 
-public class PurchaseItemDTO {
+public class OrderItemDTO {
 	
 	private long id;
 	

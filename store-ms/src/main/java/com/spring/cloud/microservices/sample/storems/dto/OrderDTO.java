@@ -2,17 +2,17 @@ package com.spring.cloud.microservices.sample.storems.dto;
 
 import java.util.List;
 
-public class PurchaseDTO {
+public class OrderDTO {
 
-	private List<PurchaseItemDTO> items;
+	private List<OrderItemDTO> items;
 	
 	private AddressDTO address;
 
-	public List<PurchaseItemDTO> getItems() {
+	public List<OrderItemDTO> getItems() {
 		return items;
 	}
 
-	public void setItems(List<PurchaseItemDTO> items) {
+	public void setItems(List<OrderItemDTO> items) {
 		this.items = items;
 	}
 

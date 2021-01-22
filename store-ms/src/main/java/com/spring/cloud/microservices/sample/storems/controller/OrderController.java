@@ -6,19 +6,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
-import com.spring.cloud.microservices.sample.storems.dto.PurchaseDTO;
-import com.spring.cloud.microservices.sample.storems.service.PurchaseService;
+import com.spring.cloud.microservices.sample.storems.dto.OrderDTO;
+import com.spring.cloud.microservices.sample.storems.service.OrderService;
 
 
 @RestController
-@RequestMapping("/purchase")
-public class PurchaseController {
+@RequestMapping("/order")
+public class OrderController {
 	
 	@Autowired
-	private PurchaseService purchaseService;
+	private OrderService orderService;
 
 	@RequestMapping(method = RequestMethod.POST)
-	public void realizaCompra(@RequestBody PurchaseDTO purchase) {
-		purchaseService.makePurchase(purchase);
+	public void makePurchase(@RequestBody OrderDTO order) {
+		orderService.makePurchase(order);
 	}
 }

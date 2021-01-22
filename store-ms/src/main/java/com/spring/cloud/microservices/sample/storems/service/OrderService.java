@@ -7,15 +7,15 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 import com.spring.cloud.microservices.sample.storems.dto.InfoSupplierDTO;
-import com.spring.cloud.microservices.sample.storems.dto.PurchaseDTO;
+import com.spring.cloud.microservices.sample.storems.dto.OrderDTO;
 
 @Service
-public class PurchaseService {
+public class OrderService {
 	
 	@Autowired
 	private RestTemplate client;
 
-	public void makePurchase(PurchaseDTO purchase) {
+	public void makePurchase(OrderDTO purchase) {
 		ResponseEntity<InfoSupplierDTO> exchange = client.exchange("http://supplier/info/" + purchase
 				.getAddress().getState(),  HttpMethod.GET, null, InfoSupplierDTO.class);
 		
