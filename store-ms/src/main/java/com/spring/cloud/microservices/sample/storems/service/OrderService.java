@@ -15,8 +15,8 @@ public class OrderService {
 	@Autowired
 	private RestTemplate client;
 
-	public void makePurchase(OrderDTO purchase) {
-		ResponseEntity<InfoSupplierDTO> exchange = client.exchange("http://supplier/info/" + purchase
+	public void makePurchase(OrderDTO order) {
+		ResponseEntity<InfoSupplierDTO> exchange = client.exchange("http://supplier/info/" + order
 				.getAddress().getState(),  HttpMethod.GET, null, InfoSupplierDTO.class);
 		
 		System.out.println(exchange.getBody().getAddress());
