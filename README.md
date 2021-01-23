@@ -41,16 +41,30 @@ microservices-repo	- Repository for the configuration files and general properti
 mvn clean install
 ```
 
-# How to run the store service
+# How to run the services
+
+Store service:
 
 ```bash
 mvn spring-boot:run -f store-ms
 ```
 
-# How to run the supplier service
+Supplier service:
 
 ```bash
 mvn spring-boot:run -f supplier-ms
+```
+
+Eureka server service:
+
+```bash
+mvn spring-boot:run -f eureka-server
+```
+
+Config server service:
+
+```bash
+mvn spring-boot:run -f config-server
 ```
 
 # To do list
