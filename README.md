@@ -21,6 +21,19 @@ The supplier is responsible for receiving orders from the store and will inform 
 
 The source code is located in "supplier-ms".
 
+# About the structure of the project
+
+config-server 		- Config server microservice;
+
+eureka-server 		- Eureka server microservice;
+
+store-ms 			- Store microservices;
+
+supplier-ms 		- Supplier microservices;
+
+resources/images 	- General images of the project;
+
+microservices-repo	- Repository for the configuration files and general properties of the microservices accessed by the server config microservice;
 
 # How to build
 
