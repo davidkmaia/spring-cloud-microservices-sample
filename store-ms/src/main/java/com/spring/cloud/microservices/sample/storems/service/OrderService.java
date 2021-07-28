@@ -16,7 +16,7 @@ public class OrderService {
 	private RestTemplate client;
 
 	public void makePurchase(OrderDTO order) {
-		ResponseEntity<InfoSupplierDTO> exchange = client.exchange("http://supplier/info/" + order
+		ResponseEntity<InfoSupplierDTO> exchange = client.exchange("http://supplier/supplier-ms/info/" + order
 				.getAddress().getState(),  HttpMethod.GET, null, InfoSupplierDTO.class);
 		
 		System.out.println(exchange.getBody().getAddress());
