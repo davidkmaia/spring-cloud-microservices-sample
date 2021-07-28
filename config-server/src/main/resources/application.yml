@@ -2,10 +2,11 @@ server:
   port: 8888
   
 spring:
-  profiles:
-    active: native
   cloud:
     config:
       server:
-        native:
-          search-locations: /home/david/Dev/Projetos/Estudos/spring-cloud-microservices-sample/microservices-repo
+        git:
+          #you must define the name of branch on git repository
+          default-label: main
+          uri: https://github.com/davidkmaia/spring-cloud-microservices-sample-repo
+          search-paths: supplier
