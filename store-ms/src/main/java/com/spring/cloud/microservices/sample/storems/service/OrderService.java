@@ -6,6 +6,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
+import com.spring.cloud.microservices.sample.storems.client.SupplierClient;
 import com.spring.cloud.microservices.sample.storems.dto.InfoSupplierDTO;
 import com.spring.cloud.microservices.sample.storems.dto.OrderDTO;
 
@@ -13,13 +14,13 @@ import com.spring.cloud.microservices.sample.storems.dto.OrderDTO;
 public class OrderService {
 	
 	@Autowired
-	private RestTemplate client;
-
+	private SupplierClient supplierClient;
+	
 	public void makePurchase(OrderDTO order) {
-		ResponseEntity<InfoSupplierDTO> exchange = client.exchange("http://supplier/supplier-ms/info/" + order
-				.getAddress().getState(),  HttpMethod.GET, null, InfoSupplierDTO.class);
 		
-		System.out.println(exchange.getBody().getAddress());
+		InfoSupplierDTO info = supplierClient.getInfoByState(order.getAddress().getState());
+		
+		System.out.println(info.getAddress());
 	}
 
 }
