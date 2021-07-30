@@ -31,4 +31,11 @@ public class AddressDTO {
 	public void setState(String state) {
 		this.state = state;
 	}
+
+	@Override
+	public String toString() {
+		return "AddressDTO [street=" + street + ", number=" + number + ", state=" + state + "]";
+	}
+	
+	
 }
