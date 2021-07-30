@@ -2,6 +2,8 @@ package com.spring.cloud.microservices.sample.supplierms.controller;
 
 import java.util.List;
 
+import javax.ws.rs.POST;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,14 +16,14 @@ import com.spring.cloud.microservices.sample.supplierms.model.Order;
 import com.spring.cloud.microservices.sample.supplierms.service.OrderService;
 
 @RestController
-@RequestMapping("order")
+@RequestMapping("/order")
 public class OrderController {
 
 	@Autowired
 	private OrderService orderService;
 	
 	@RequestMapping(method = RequestMethod.POST)
-	public Order realizaOrder(@RequestBody List<OrderItemDTO> products) {
+	public Order makeOrder(@RequestBody List<OrderItemDTO> products) {
 		return orderService.makeOrder(products);
 	}
 	
