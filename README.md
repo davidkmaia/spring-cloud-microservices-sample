@@ -71,6 +71,13 @@ mvn spring-boot:run -f config-server
 
 - [x] Build a store sample service
 - [x] Build a supplier sample service
+- [x] Build a config server sample service
+- [x] Build a eureka server sample service
+- [x] Build load balance using Ribbon
+- [x] Build the implemented of the interfaces to access with Feign
+- [x] Build distributed tracing with spring sleuth
+- [x] Use Papertrail to concenter the logs. papertrail.com
+- [ ] Build circuit breaker. 
+- [ ] Build fallback.
 - [ ] Add tests for store service
 - [ ] Add tests for supplier service
-- [ ] Enable distributed tracing with spring sleuth
