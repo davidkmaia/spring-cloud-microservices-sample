@@ -5,6 +5,7 @@ import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import com.spring.cloud.microservices.sample.storems.client.SupplierClient;
 import com.spring.cloud.microservices.sample.storems.dto.InfoOrderDTO;
 import com.spring.cloud.microservices.sample.storems.dto.InfoSupplierDTO;
@@ -20,6 +21,8 @@ public class OrderService {
 	@Autowired
 	private SupplierClient supplierClient;
 	
+	//call the fallback method that the is 'makePurchaseFallback'
+	@HystrixCommand(fallbackMethod = "makePurchaseFallback")
 	public Acquisition makePurchase(OrderDTO order) {
 		
 		LOG.info("Searching info of supllier of {}", order.getAddress().getState());
@@ -31,6 +34,11 @@ public class OrderService {
 		System.out.println(info.getAddress());
 		
 		return new Acquisition(orderSaved.getId(), orderSaved.getPreparationTime(), order.getAddress().toString());
+	}
+
+	//he fallback method
+	public Acquisition makePurchaseFallback(OrderDTO order) {
+		return new Acquisition(null, null, order.getAddress().toString());
 	}
 
 }
