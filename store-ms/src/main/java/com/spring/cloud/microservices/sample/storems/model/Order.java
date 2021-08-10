@@ -1,20 +1,28 @@
 package com.spring.cloud.microservices.sample.storems.model;
 
-public class Acquisition {
+import javax.persistence.Entity;
+import javax.persistence.Id;
+
+@Entity(name = "STORE_ORDER")
+public class Order {
 	
+	@Id
 	private Long orderId;
 	private Integer preparationTime;
 	private String destinationAddress;
 	
 	
 
-	public Acquisition(Long orderId, Integer preparationTime, String destinationAddress) {
+	public Order(Long orderId, Integer preparationTime, String destinationAddress) {
 		super();
 		this.orderId = orderId;
 		this.preparationTime = preparationTime;
 		this.destinationAddress = destinationAddress;
 	}
 	
+	public Order() {
+	}
+
 	public String getDestinationAddress() {
 		return destinationAddress;
 	}
