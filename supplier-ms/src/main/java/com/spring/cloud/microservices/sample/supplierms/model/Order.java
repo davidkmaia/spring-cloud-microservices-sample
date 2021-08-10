@@ -14,7 +14,7 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "ORDERR")
+@Table(name = "SUP_ORDER")
 public class Order {
 	@Id
 	@GeneratedValue(strategy = GenerationType.IDENTITY)
