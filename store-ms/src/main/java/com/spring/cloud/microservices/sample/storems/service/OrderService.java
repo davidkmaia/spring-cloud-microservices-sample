@@ -10,7 +10,8 @@ import com.spring.cloud.microservices.sample.storems.client.SupplierClient;
 import com.spring.cloud.microservices.sample.storems.dto.InfoOrderDTO;
 import com.spring.cloud.microservices.sample.storems.dto.InfoSupplierDTO;
 import com.spring.cloud.microservices.sample.storems.dto.OrderDTO;
-import com.spring.cloud.microservices.sample.storems.model.Acquisition;
+import com.spring.cloud.microservices.sample.storems.model.Order;
+import com.spring.cloud.microservices.sample.storems.repository.OrderRepository;
 
 
 @Service
@@ -21,24 +22,32 @@ public class OrderService {
 	@Autowired
 	private SupplierClient supplierClient;
 	
+	@Autowired
+	private OrderRepository orderRepository;
+	
+	@HystrixCommand(fallbackMethod = "makePurchaseFallback", threadPoolKey = "getByIdThreadPool")
+	public Order getById(Long id) {
+		return orderRepository.findById(id).orElse(new Order());
+	}
+	
 	//call the fallback method that the is 'makePurchaseFallback'
-	@HystrixCommand(fallbackMethod = "makePurchaseFallback")
-	public Acquisition makePurchase(OrderDTO order) {
+	@HystrixCommand(fallbackMethod = "makePurchaseFallback", threadPoolKey = "makePurchaseThreadPool")
+	public Order makePurchase(OrderDTO order) {
 		
 		LOG.info("Searching info of supllier of {}", order.getAddress().getState());
 		InfoSupplierDTO info = supplierClient.getInfoByState(order.getAddress().getState());
 		
 		LOG.info("Making a order");
-		InfoOrderDTO orderSaved = supplierClient.makeOrder(order.getItems());
+		InfoOrderDTO orderMaked = supplierClient.makeOrder(order.getItems());
 		
 		System.out.println(info.getAddress());
-		
-		return new Acquisition(orderSaved.getId(), orderSaved.getPreparationTime(), order.getAddress().toString());
+		Order orderSaved = orderRepository.save(new Order(orderMaked.getId(), orderMaked.getPreparationTime(), order.getAddress().toString()));
+		return orderSaved;
 	}
 
 	//he fallback method
-	public Acquisition makePurchaseFallback(OrderDTO order) {
-		return new Acquisition(null, null, order.getAddress().toString());
+	public Order makePurchaseFallback(OrderDTO order) {
+		return new Order(null, null, order.getAddress().toString());
 	}
 
 }
