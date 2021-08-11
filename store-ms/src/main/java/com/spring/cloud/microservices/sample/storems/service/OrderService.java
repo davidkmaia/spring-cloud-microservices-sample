@@ -45,9 +45,14 @@ public class OrderService {
 		return orderSaved;
 	}
 
-	//he fallback method
+	//Fallback method should have exactly same arguments and return type.
 	public Order makePurchaseFallback(OrderDTO order) {
 		return new Order(null, null, order.getAddress().toString());
+	}
+	
+	//Fallback method should have exactly same arguments and return type.
+	public Order makePurchaseFallback(Long id) {
+		return new Order();
 	}
 
 }
