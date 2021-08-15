@@ -1,0 +1,6 @@
+spring:
+  application:
+    name: shipping
+  profiles:
+    active: default
+  cloud:    config:      uri: http://localhost:8888
