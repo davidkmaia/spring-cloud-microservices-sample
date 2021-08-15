@@ -9,4 +9,4 @@ spring:
           #you must define the name of branch on git repository
           default-label: main
           uri: https://github.com/davidkmaia/spring-cloud-microservices-sample-repo
-          search-paths: supplier, store
+          search-paths: supplier, store, shipping
