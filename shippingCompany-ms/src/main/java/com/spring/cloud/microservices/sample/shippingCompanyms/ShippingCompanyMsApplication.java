@@ -7,6 +7,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class ShippingCompanyMsApplication {
 
 	public static void main(String[] args) {
+		System.setProperty("spring.cloud.bootstrap.enabled","true");
 		SpringApplication.run(ShippingCompanyMsApplication.class, args);
 	}
 
